@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.Update;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,24 +31,57 @@ public class DAOCliente {
         transaction.commit();
         session.close();
     }
-    
+    /*
+  1.   GUARDAR
+    */
     public void guardar(Cliente reservacion)throws Exception{
         session.save(reservacion);
         cerrarTodo();
     }
-
+/*
+    2. BUSCAR TODOS
+    */
     ArrayList<Cliente> buscarTodos() throws Exception{
   ArrayList<Cliente>clientes=  (ArrayList<Cliente>) session.createCriteria(Cliente.class).list();
   cerrarTodo();
   
     return clientes;
     }
-    
-    Cliente actualizar(Cliente c)throws Exception{
-        
+    /*
+   3.  BUSCAR POR ID
+    */
+    public Cliente buscarPorId(Integer id) throws Exception{
+ 
+      Cliente    c=(Cliente) session.createCriteria(Cliente.class).add(Restrictions.idEq(id)).uniqueResult();
+  cerrarTodo();
+  
          c=(Cliente) session.createCriteria(Cliente.class).add(Restrictions.idEq(c.getIdCliente())).uniqueResult();
          
-         return c;
+    return c;
     }
+    /*
+    4. ACTUALIZAR
+    */
+    public void actualizar(Cliente c)throws Exception{
+        
+
+       
+         session.update(c);
+         cerrarTodo();
+        
+    }
+    /*
+    5. BORRAR
+    */
+     public void   borrar(Integer id)throws Exception{
+        
+Cliente c=new Cliente();
+        c.setIdCliente(id); 
+         session.delete(c);
+         cerrarTodo();
+         
+    }
+    
+    
     
 }   

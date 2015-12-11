@@ -5,6 +5,7 @@
  */
 package javamalloooo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +18,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/")
 public class ControladorInicial {
+    @Autowired
+    Mensaje mensaje;
     
     @RequestMapping("/")
     @CrossOrigin
     @ResponseBody String hola() throws Exception{
-  
-        return "Hola desde el spring boot sin maven";
+  System.out.println("hay  "+mensaje.mensajear());
+        return "Hola desde el spring boot sin mavensito, voy a llorar :'(";
+    }
+    @RequestMapping("/hola")
+    public String holita(){
+        return "holita.html";
     }
     
 }

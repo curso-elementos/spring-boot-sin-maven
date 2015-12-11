@@ -8,6 +8,7 @@ package javamalloooo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -26,6 +27,12 @@ public class Javamalloooo {
     public static void main(String[] args) {
         // TODO code application logic here
         SpringApplication.run(Javamalloooo.class, args);
+        System.out.println("Hola");
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+    ctx.register(Configuraciones.class);
+    ctx.refresh();
+   Mensaje mensa= (Mensaje) ctx.getBean("mensajear");
+   System.out.println(mensa.mensajear());
     }
     
 }
