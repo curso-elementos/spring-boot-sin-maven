@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -21,13 +22,12 @@ public class ControladorInicial {
     @Autowired
     Mensaje mensaje;
     
-    @RequestMapping("/")
-    @CrossOrigin
+    @RequestMapping(value="/mensajito", method=RequestMethod.GET, headers={"Accept=text/html"})
     @ResponseBody String hola() throws Exception{
   System.out.println("hay  "+mensaje.mensajear());
         return "Hola desde el spring boot sin mavensito, voy a llorar :'(";
     }
-    @RequestMapping("/hola")
+    @RequestMapping("/")
     public String holita(){
         return "holita.html";
     }
