@@ -7,3 +7,18 @@ CREATE TABLE CLIENTE (ID_CLIENTE INTEGER PRIMARY KEY AUTO_INCREMENT,
 NOMBRE VARCHAR(100), EMAIL VARCHAR(100), PATERNO VARCHAR(100));
 
 select * from CLIENTE;
+
+--creamos la tabla empleado
+create table empleado (id_empleado integer 
+auto_increment primary key,
+nombre varchar(40),
+paterno varchar(40),
+login varchar(20),
+password integer);
+select * from empleado;
+
+create table control(id_control,
+id_mpleado,
+entreda,
+salida);
+
