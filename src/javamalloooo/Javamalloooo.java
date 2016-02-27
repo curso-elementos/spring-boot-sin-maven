@@ -27,7 +27,7 @@ public class Javamalloooo {
     public static void main(String[] args) {
         // TODO code application logic here
         SpringApplication.run(Javamalloooo.class, args);
-        System.out.println("Hola pablo");
+        System.out.println("Hola pablo como estas?");
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
     ctx.register(Configuraciones.class);
     ctx.refresh();
