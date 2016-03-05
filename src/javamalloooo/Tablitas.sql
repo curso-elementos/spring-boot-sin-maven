@@ -15,10 +15,15 @@ nombre varchar(40),
 paterno varchar(40),
 login varchar(20),
 password integer);
+
+
 select * from empleado;
 
-create table control(id_control,
-id_mpleado,
-entreda,
-salida);
+create table control(id_control integer primary key auto_increment,
+id_empleado integer,
+entreda date,
+salida date,
+foreign key(id_empleado) references empleado(id_empleado));
+
+select * from control;
 
