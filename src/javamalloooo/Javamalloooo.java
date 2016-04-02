@@ -24,15 +24,26 @@ public class Javamalloooo {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception{
         // TODO code application logic here
         SpringApplication.run(Javamalloooo.class, args);
         System.out.println("Hola pablo como estas?");
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+       /* AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
     ctx.register(Configuraciones.class);
     ctx.refresh();
    Mensaje mensa= (Mensaje) ctx.getBean("mensajear");
    System.out.println(mensa.mensajear());
+       */
+       Empleado e=new Empleado();
+                 e.setLogin("primero");
+                 e.setNombre("Juan Carlos");
+                 e.setPaterno("Campos");
+                 e.setPasword(123);
+                 
+         DAOEmpleado dao=new DAOEmpleado();
+         dao.guardar(e); 
+       
+       
     }
     
 }

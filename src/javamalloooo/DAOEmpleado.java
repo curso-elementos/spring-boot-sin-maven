@@ -50,19 +50,19 @@ public class DAOEmpleado {
     /*
    3.  BUSCAR POR ID
     */
-    public Cliente buscarPorId(Integer id) throws Exception{
+    public Empleado buscarPorId(Integer id) throws Exception{
  
-      Cliente    c=(Cliente) session.createCriteria(Cliente.class).add(Restrictions.idEq(id)).uniqueResult();
-  cerrarTodo();
+      Empleado  c=(Empleado) session.createCriteria(Empleado.class).add(Restrictions.idEq(id)).uniqueResult();
+      cerrarTodo();
   
-         c=(Cliente) session.createCriteria(Cliente.class).add(Restrictions.idEq(c.getIdCliente())).uniqueResult();
+
          
     return c;
     }
     /*
     4. ACTUALIZAR
     */
-    public void actualizar(Cliente c)throws Exception{
+    public void actualizar(Empleado c)throws Exception{
         
 
        
@@ -75,8 +75,8 @@ public class DAOEmpleado {
     */
      public void   borrar(Integer id)throws Exception{
         
-Cliente c=new Cliente();
-        c.setIdCliente(id); 
+Empleado c=new Empleado();
+        c.setId(id); 
          session.delete(c);
          cerrarTodo();
          
